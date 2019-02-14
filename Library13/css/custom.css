@@ -1,0 +1,13 @@
+body{
+	background-color: #B4C3E7;
+}
+ .jumbotron{
+ 	background-image: url(../img/wall.jpg);
+ 	background-size: cover;
+ 	height: 100vh;
+ }
+  .container{
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+  }
