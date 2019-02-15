@@ -4,15 +4,21 @@ $conn = mysqli_connect("localhost", "root", "", "library13");
 
 $id = $_GET['id'];
 
-$tampil = "SELECT * FROM buku WHERE id_buku = '$id' ";
+$tampil = "SELECT * FROM peminjam WHERE id_pinjam = '$id' ";
 
 $hasil = mysqli_query($conn, $tampil);
 
 $data = mysqli_fetch_array($hasil);
 
+$nama_siswa = $data['nama_siswa'];
 $judul_buku = $data['judul_buku'];
+$tgl_pinjam = $data['tgl_pinjam'];
 
  ?>
+<?php
+	
+	$conn = mysqli_connect("localhost", "root", "", "library13");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +47,18 @@ $judul_buku = $data['judul_buku'];
     			<a class="nav-link" href="#">List Peminjam</a>
   			</li>
 		</ul>
-		<h2>Edit Data Buku</h2>
-		<form action="pu_buku.php" method="GET">
-			<label for="">Judul Buku</label> <br>
-			<input type="text" name="judul" value="<?= $data['judul_buku']; ?>"> <br>
+		<h2>Edit Data Peminjam</h2>
+		<form action="pu_peminjam.php" method="GET">
+			<label for="">Nama Siswa</label> <br>
+			<input type="text" name="siswa" value="<?= $data['nama_siswa']; ?>"> <br>
 
-			<input type="hidden" name="id" value="<?= $data['id_buku'] ?>">
+			<label for="">Judul Buku</label> <br>
+			<input type="text" name="buku" value="<?= $data['judul_buku']; ?>"> <br>
+
+			<label for="">Tanggal Pinjam</label> <br>
+			<input type="date" name="pinjam" value="<?= $data['tgl_pinjam']; ?>"> <br>
+
+			<input type="hidden" name="id" value="<?= $data['id_pinjam'] ?>">
 			
 			<input type="submit" value="Simpan">
 			<br>
