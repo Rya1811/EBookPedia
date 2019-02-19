@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2019 at 05:51 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: Feb 19, 2019 at 10:00 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,8 +39,29 @@ CREATE TABLE `buku` (
 
 INSERT INTO `buku` (`id_buku`, `judul_buku`) VALUES
 (2, 'Tutorial PHP'),
-(3, 'Tutorial Membuat Kueh'),
-(4, 'Tutorail Login ke Localhost');
+(3, 'Tutorial Membuat Kue'),
+(4, 'Tutorail Login ke Localhost'),
+(7, 'Rakudai Kishi no Eiyuutan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjam`
+--
+
+CREATE TABLE `peminjam` (
+  `id_pinjam` int(11) NOT NULL,
+  `nama_siswa` varchar(500) NOT NULL,
+  `judul_buku` varchar(500) NOT NULL,
+  `tgl_pinjam` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `peminjam`
+--
+
+INSERT INTO `peminjam` (`id_pinjam`, `nama_siswa`, `judul_buku`, `tgl_pinjam`) VALUES
+(5, 'Gilbert', 'Tutorial PHP', '2019-02-22');
 
 -- --------------------------------------------------------
 
@@ -100,8 +121,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama_siswa`) VALUES
-(1, 'Husein'),
-(2, 'Gilbert'),
+(1, 'Hassan'),
 (3, 'Ikeu');
 
 -- --------------------------------------------------------
@@ -112,7 +132,6 @@ INSERT INTO `siswa` (`id_siswa`, `nama_siswa`) VALUES
 
 CREATE TABLE `transaksi` (
   `no_pinjam` int(11) NOT NULL,
-  `tgl_pinjam` date NOT NULL,
   `id_penjaga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -120,8 +139,8 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`no_pinjam`, `tgl_pinjam`, `id_penjaga`) VALUES
-(1, '2015-03-04', 1);
+INSERT INTO `transaksi` (`no_pinjam`, `id_penjaga`) VALUES
+(1, 1);
 
 --
 -- Indexes for dumped tables
@@ -132,6 +151,12 @@ INSERT INTO `transaksi` (`no_pinjam`, `tgl_pinjam`, `id_penjaga`) VALUES
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`);
+
+--
+-- Indexes for table `peminjam`
+--
+ALTER TABLE `peminjam`
+  ADD PRIMARY KEY (`id_pinjam`);
 
 --
 -- Indexes for table `penjaga`
@@ -165,7 +190,13 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `peminjam`
+--
+ALTER TABLE `peminjam`
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `penjaga`
