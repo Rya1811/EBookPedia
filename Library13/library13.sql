@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2019 at 10:00 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: 19 Feb 2019 pada 10.08
+-- Versi Server: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buku`
+-- Struktur dari tabel `buku`
 --
 
 CREATE TABLE `buku` (
@@ -34,19 +34,18 @@ CREATE TABLE `buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `buku`
+-- Dumping data untuk tabel `buku`
 --
 
 INSERT INTO `buku` (`id_buku`, `judul_buku`) VALUES
 (2, 'Tutorial PHP'),
-(3, 'Tutorial Membuat Kue'),
-(4, 'Tutorail Login ke Localhost'),
-(7, 'Rakudai Kishi no Eiyuutan');
+(3, 'Tutorial Membuat Kueh'),
+(4, 'Tutorail Login ke Localhost');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peminjam`
+-- Struktur dari tabel `peminjam`
 --
 
 CREATE TABLE `peminjam` (
@@ -57,7 +56,7 @@ CREATE TABLE `peminjam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `peminjam`
+-- Dumping data untuk tabel `peminjam`
 --
 
 INSERT INTO `peminjam` (`id_pinjam`, `nama_siswa`, `judul_buku`, `tgl_pinjam`) VALUES
@@ -66,7 +65,7 @@ INSERT INTO `peminjam` (`id_pinjam`, `nama_siswa`, `judul_buku`, `tgl_pinjam`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjaga`
+-- Struktur dari tabel `penjaga`
 --
 
 CREATE TABLE `penjaga` (
@@ -75,7 +74,7 @@ CREATE TABLE `penjaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `penjaga`
+-- Dumping data untuk tabel `penjaga`
 --
 
 INSERT INTO `penjaga` (`id_penjaga`, `nama_penjaga`) VALUES
@@ -84,7 +83,7 @@ INSERT INTO `penjaga` (`id_penjaga`, `nama_penjaga`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pinjam`
+-- Struktur dari tabel `pinjam`
 --
 
 CREATE TABLE `pinjam` (
@@ -97,7 +96,7 @@ CREATE TABLE `pinjam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pinjam`
+-- Dumping data untuk tabel `pinjam`
 --
 
 INSERT INTO `pinjam` (`id_pinjam`, `jumlah`, `tgl_kembali`, `id_buku`, `id_siswa`, `no_pinjam`) VALUES
@@ -108,7 +107,7 @@ INSERT INTO `pinjam` (`id_pinjam`, `jumlah`, `tgl_kembali`, `id_buku`, `id_siswa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -117,30 +116,32 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama_siswa`) VALUES
-(1, 'Hassan'),
+(1, 'Husein'),
+(2, 'Gilbert'),
 (3, 'Ikeu');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
   `no_pinjam` int(11) NOT NULL,
+  `tgl_pinjam` date NOT NULL,
   `id_penjaga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data untuk tabel `transaksi`
 --
 
-INSERT INTO `transaksi` (`no_pinjam`, `id_penjaga`) VALUES
-(1, 1);
+INSERT INTO `transaksi` (`no_pinjam`, `tgl_pinjam`, `id_penjaga`) VALUES
+(1, '2015-03-04', 1);
 
 --
 -- Indexes for dumped tables
@@ -151,12 +152,6 @@ INSERT INTO `transaksi` (`no_pinjam`, `id_penjaga`) VALUES
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`);
-
---
--- Indexes for table `peminjam`
---
-ALTER TABLE `peminjam`
-  ADD PRIMARY KEY (`id_pinjam`);
 
 --
 -- Indexes for table `penjaga`
@@ -190,32 +185,22 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `peminjam`
---
-ALTER TABLE `peminjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `penjaga`
 --
 ALTER TABLE `penjaga`
   MODIFY `id_penjaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `pinjam`
 --
 ALTER TABLE `pinjam`
   MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
