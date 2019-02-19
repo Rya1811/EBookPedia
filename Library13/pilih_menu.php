@@ -1,7 +1,3 @@
-<?php
-	
-	$conn = mysqli_connect("localhost", "root", "", "library13");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,17 +19,11 @@
 	<div class="jumbotron"></div>
 	<div class="hero-image">
 	  	<div class="hero-text">
-			
-			<h2>Masukan data buku</h2>
-			<form action="proses_buku.php" method="GET">
-			
-			<label for=""><b>Judul Buku :</b></label> <br>
-			<input type="text" name="judul"> <br>
-			
-			<input type="submit" value="kirim"><br><br>
-			<a href="index.php">Batal</a>
-			</form>
-		
+	    	
+			<h1>Pilih menu mana hari ini?</h1>	<br><br>
+  			<h5>Booksite web online</h5> <br>
+  			<a href="input_data.php"><button>Input data</button></a>
+	    	<a href="tables.php"><button>List data</button></a>
 	  	</div>
 	</div>
 	<!-- Anim JS -->

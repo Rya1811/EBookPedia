@@ -1,7 +1,19 @@
-<?php
-	
-	$conn = mysqli_connect("localhost", "root", "", "library13");
-?>
+<?php 
+
+$conn = mysqli_connect("localhost", "root", "", "library13");
+
+$id = $_GET['id'];
+
+$tampil = "SELECT * FROM siswa WHERE id_siswa = '$id' ";
+
+$hasil = mysqli_query($conn, $tampil);
+
+$data = mysqli_fetch_array($hasil);
+
+$nama_siswa = $data['nama_siswa'];
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +35,17 @@
 	<div class="jumbotron"></div>
 	<div class="hero-image">
 	  	<div class="hero-text">
+			<h1>Update Siswa</h1>	<br>
+
+			<form action="pu_siswa.php" method="GET">
+			<label for="">Nama Siswa</label> <br>
+			<input type="text" name="siswa" value="<?= $data['nama_siswa']; ?>"> <br>
+
+			<input type="hidden" name="id" value="<?= $data['id_siswa'] ?>">
 			
-			<h2>Masukan data buku</h2>
-			<form action="proses_buku.php" method="GET">
-			
-			<label for=""><b>Judul Buku :</b></label> <br>
-			<input type="text" name="judul"> <br>
-			
-			<input type="submit" value="kirim"><br><br>
-			<a href="index.php">Batal</a>
+			<input type="submit" value="Simpan">
+			<br>
+				<a href="tables.php">Batal</a>
 			</form>
 		
 	  	</div>

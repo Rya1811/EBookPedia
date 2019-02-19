@@ -15,12 +15,12 @@ $hasil = mysqli_query($conn, $update);
 if ($hasil) {
 	echo "<script>
  			alert('Data Berhasil Diubah');
- 			document.location.href = 'list_buku.php';
+ 			document.location.href = 'tables.php';
  		</script>";
 }else{
 	echo "<script>
  			alert('Data Gagal Diubah');
- 			document.location.href = 'list_buku.php';
+ 			document.location.href = 'tables.php';
  		</script>";
 }
 

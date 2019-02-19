@@ -4,7 +4,7 @@ $conn = mysqli_connect("localhost", "root", "", "library13");
 
 $id = $_GET['id'];
 
-$delete = "DELETE FROM peminjam WHERE id_pinjam = '$id' ";
+$delete = "DELETE FROM siswa WHERE id_siswa = '$id' ";
 
 $hasil = mysqli_query($conn, $delete);
 

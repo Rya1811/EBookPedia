@@ -6,14 +6,9 @@ $conn = mysqli_connect("localhost", "root", "", "library13");
 // ambil data dari tampilan
 $id = $_GET['id'];
 $siswa = $_GET['siswa'];
-$buku = $_GET['buku'];
-$pinjam = $_GET['pinjam'];
 
-$update = "UPDATE peminjam SET id_pinjam = '$id',
-			 nama_siswa = '$siswa',
-			 judul_buku = '$buku', 
-			 tgl_pinjam ='$pinjam' 
-	WHERE 	 id_pinjam = '$id' ";
+$update = "UPDATE siswa SET id_siswa = '$id',
+			nama_siswa = '$siswa' WHERE id_siswa = '$id' ";
 
 $hasil = mysqli_query($conn, $update);
 
@@ -29,4 +24,5 @@ if ($hasil) {
  		</script>";
 }
 
- ?>p
+ ?>
+ 
