@@ -5,7 +5,7 @@
 	$tampil = "SELECT * FROM buku";
 	$tampil2 = "SELECT * FROM siswa";
 	$tampil3 = "SELECT * FROM peminjam";
-	$tampil4 = "SELECT * FROM pinjam";
+	$tampil4 = "SELECT * FROM pinjam JOIN peminjam";
 
 	$hasil = mysqli_query($conn, $tampil);
 	$hasil2 = mysqli_query($conn, $tampil2);
@@ -117,10 +117,10 @@
 					<tr>
 						<th class="bg-primary" style="text-align: center;">ID Pinjam</th>
 						<th class="bg-primary" style="text-align: center;">Jumlah</th>
-						<th class="bg-primary" style="text-align: center;">Tgl_kembali</th>
-						<th class="bg-primary" style="text-align: center;">id_buku</th>
-						<th class="bg-primary" style="text-align: center;">id_siswa</th>
-						<th class="bg-primary" style="text-align: center;">no_pinjam</th>
+						<th class="bg-primary" style="text-align: center;">Tgl Kembali</th>
+						<th class="bg-primary" style="text-align: center;">Judul Buku</th>
+						<th class="bg-primary" style="text-align: center;">Nama Siswa</th>
+						<th class="bg-primary" style="text-align: center;">No Pinjam</th>
 						<th class="bg-primary" style="text-align: center;">Pilihan</th>
 					</tr>
 					<?php $i = 1; ?>
@@ -129,8 +129,8 @@
 						<td style="text-align: center;"><?= $i; ?></td>
 						<td><?= $data['jumlah']; ?></td>
 						<td><?= $data['tgl_kembali']; ?></td>
-						<td><?= $data['id_buku']; ?></td>
-						<td><?= $data['id_siswa']; ?></td>
+						<td><?= $data['judul_buku']; ?></td>
+						<td><?= $data['nama_siswa']; ?></td>
 						<td><?= $data['no_pinjam']; ?></td>
 						<td style="text-align: center;">
 							<a href="delete_siswa.php?id=<?= $data['id_siswa']; ?>"> Hapus </a>
