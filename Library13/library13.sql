@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Feb 2019 pada 10.08
--- Versi Server: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Feb 14, 2019 at 05:51 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
@@ -34,7 +34,7 @@ CREATE TABLE `buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`id_buku`, `judul_buku`) VALUES
@@ -45,27 +45,7 @@ INSERT INTO `buku` (`id_buku`, `judul_buku`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjam`
---
-
-CREATE TABLE `peminjam` (
-  `id_pinjam` int(11) NOT NULL,
-  `nama_siswa` varchar(500) NOT NULL,
-  `judul_buku` varchar(500) NOT NULL,
-  `tgl_pinjam` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `peminjam`
---
-
-INSERT INTO `peminjam` (`id_pinjam`, `nama_siswa`, `judul_buku`, `tgl_pinjam`) VALUES
-(5, 'Gilbert', 'Tutorial PHP', '2019-02-22');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `penjaga`
+-- Table structure for table `penjaga`
 --
 
 CREATE TABLE `penjaga` (
@@ -74,7 +54,7 @@ CREATE TABLE `penjaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `penjaga`
+-- Dumping data for table `penjaga`
 --
 
 INSERT INTO `penjaga` (`id_penjaga`, `nama_penjaga`) VALUES
@@ -83,7 +63,7 @@ INSERT INTO `penjaga` (`id_penjaga`, `nama_penjaga`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pinjam`
+-- Table structure for table `pinjam`
 --
 
 CREATE TABLE `pinjam` (
@@ -96,7 +76,7 @@ CREATE TABLE `pinjam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pinjam`
+-- Dumping data for table `pinjam`
 --
 
 INSERT INTO `pinjam` (`id_pinjam`, `jumlah`, `tgl_kembali`, `id_buku`, `id_siswa`, `no_pinjam`) VALUES
@@ -107,7 +87,7 @@ INSERT INTO `pinjam` (`id_pinjam`, `jumlah`, `tgl_kembali`, `id_buku`, `id_siswa
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Table structure for table `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -116,7 +96,7 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `siswa`
+-- Dumping data for table `siswa`
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama_siswa`) VALUES
@@ -127,7 +107,7 @@ INSERT INTO `siswa` (`id_siswa`, `nama_siswa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -137,7 +117,7 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`no_pinjam`, `tgl_pinjam`, `id_penjaga`) VALUES
@@ -186,21 +166,25 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `buku`
   MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `penjaga`
 --
 ALTER TABLE `penjaga`
   MODIFY `id_penjaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `pinjam`
 --
 ALTER TABLE `pinjam`
   MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

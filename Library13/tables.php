@@ -5,10 +5,12 @@
 	$tampil = "SELECT * FROM buku";
 	$tampil2 = "SELECT * FROM siswa";
 	$tampil3 = "SELECT * FROM peminjam";
+	$tampil4 = "SELECT * FROM pinjam";
 
 	$hasil = mysqli_query($conn, $tampil);
 	$hasil2 = mysqli_query($conn, $tampil2);
 	$hasil3 = mysqli_query($conn, $tampil3);
+	$hasil4 = mysqli_query($conn, $tampil4);
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,13 +30,16 @@
 	</div>
 	<div class="hero-image">
 	  	<div class="hero-text">
-			<h3>Pilih Tabel</h3>
+	  		<h3 style="color: lime;">Input Data</h3>
+	  		<a href="input_data.php"><button>Klik disini!</button></a>
+			<h3 style="color: orange; color: rgba(0.4);">Pilih Tabel</h3>
 
 			<div class="tab">
 			  <button class="tablinks" onclick="openCity(event, 'Buku')">Buku</button>
 			  <button class="tablinks" onclick="openCity(event, 'Peminjam')">Peminjam</button>
 			  <button class="tablinks" onclick="openCity(event, 'Siswa')">Siswa</button>
-			  <a href="index.php"><button>Tambah peminjam</button></a>
+			  <button class="tablinks" onclick="openCity(event, 'Pinjam')">Pinjam</button>
+			  
 			</div>
 
 			<div id="Buku" class="tabcontent" align="center">
@@ -100,6 +105,35 @@
 						<td style="text-align: center;">
 							<a href="delete_siswa.php?id=<?= $data['id_siswa']; ?>">Hapus |</a>
 							<a href="update_siswa.php?id=<?= $data['id_siswa']; ?>"> Update</a>
+						</td>
+					</tr>
+					<?php $i++; ?>
+					<?php endwhile; ?>
+				</table>
+			</div>
+
+			<div id="Pinjam" class="tabcontent">
+				<table class="table table-bordered table-hover table-dark" cellspacing="0" cellpadding="10">
+					<tr>
+						<th class="bg-primary" style="text-align: center;">ID Pinjam</th>
+						<th class="bg-primary" style="text-align: center;">Jumlah</th>
+						<th class="bg-primary" style="text-align: center;">Tgl_kembali</th>
+						<th class="bg-primary" style="text-align: center;">id_buku</th>
+						<th class="bg-primary" style="text-align: center;">id_siswa</th>
+						<th class="bg-primary" style="text-align: center;">no_pinjam</th>
+						<th class="bg-primary" style="text-align: center;">Pilihan</th>
+					</tr>
+					<?php $i = 1; ?>
+					<?php while ($data = mysqli_fetch_array($hasil4)): ?>
+					<tr>
+						<td style="text-align: center;"><?= $i; ?></td>
+						<td><?= $data['jumlah']; ?></td>
+						<td><?= $data['tgl_kembali']; ?></td>
+						<td><?= $data['id_buku']; ?></td>
+						<td><?= $data['id_siswa']; ?></td>
+						<td><?= $data['no_pinjam']; ?></td>
+						<td style="text-align: center;">
+							<a href="delete_siswa.php?id=<?= $data['id_siswa']; ?>"> Hapus </a>
 						</td>
 					</tr>
 					<?php $i++; ?>
